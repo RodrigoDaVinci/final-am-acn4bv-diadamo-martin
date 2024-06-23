@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item android:state_pressed="true" android:color="#8BC34A" /> <!-- Color cuando el botón está presionado -->
+        <item android:state_focused="true" android:color="#CDDC39" /> <!-- Color cuando el botón está enfocado -->
+        <item android:color="#9EC58A" /> <!-- Color por defecto -->
+
+</selector>
