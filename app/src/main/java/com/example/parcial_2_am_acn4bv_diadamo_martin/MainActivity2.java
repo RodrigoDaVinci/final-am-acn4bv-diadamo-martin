@@ -41,7 +41,6 @@ public class MainActivity2 extends AppCompatActivity {
         configureButtonClick(R.id.buttonCharlasSeguridad, CharlasSeguridadActivity.class, selectedOption);
         configureButtonClick(R.id.buttonNormativa, NormativaActivity.class, selectedOption);
         configureButtonClick(R.id.buttonDenunciaAccidente, DenunciaAccidenteActivity.class, selectedOption);
-        configureButtonClick(R.id.buttonCapacitaciones, CapacitacionesActivity.class, selectedOption);
     }
 
     private void configureButtonClick(int buttonId, final Class<?> targetActivity, final String selectedOption) {

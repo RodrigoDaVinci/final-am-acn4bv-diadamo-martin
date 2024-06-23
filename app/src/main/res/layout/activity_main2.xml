@@ -149,22 +149,6 @@
                 app:iconGravity="end"
                 app:iconTint="#00695c"/>
 
-            <!-- Botón 5 -->
-            <Button
-                android:id="@+id/buttonCapacitaciones"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal|center_vertical"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:backgroundTint="#9EC58A"
-                android:text="Capacitaciones"
-                android:textColor="#00695c"
-                android:textStyle="bold"
-                app:icon="@drawable/flecha"
-                app:iconGravity="end"
-                app:iconTint="#00695c"/>
-
         </LinearLayout>
     </LinearLayout>
 

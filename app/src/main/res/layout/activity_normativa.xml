@@ -6,27 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NormativaActivity">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:gravity="center">
 
-        <TextView
+        <Button
+            android:id="@+id/btnIngresarNormativa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="En Construcción"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:text="Normativa Vigente"
+            android:textSize="18sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:backgroundTint="#00695c"
+            android:onClick="onIngresarNormativa" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Esta pantalla está en construcción y estará disponible próximamente."
-            android:layout_marginTop="16dp"
-            android:textAlignment="center" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

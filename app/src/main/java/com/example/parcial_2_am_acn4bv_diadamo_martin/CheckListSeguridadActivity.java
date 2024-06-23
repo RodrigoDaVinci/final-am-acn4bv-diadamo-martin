@@ -305,6 +305,7 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
 
         // Crea un intent para enviar el email
         Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("message/rfc822");
         intent.putExtra(Intent.EXTRA_SUBJECT, "Lista de tareas de seguridad");
         intent.putExtra(Intent.EXTRA_TEXT, emailContent.toString());
 
