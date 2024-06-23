@@ -1,5 +1,6 @@
 package com.example.parcial_2_am_acn4bv_diadamo_martin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView dynamicImageView;
     private Button buttonContinuar;
+    private String selectedOption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Seleccionaste Agro", Toast.LENGTH_SHORT).show();
                 //Mostar imagen
                 addDynamicImageView(R.drawable.agro_image);
+                selectedOption = "Agro";
             }
         });
 
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Seleccionaste Petrolera", Toast.LENGTH_SHORT).show();
                 //Mostar imagen
                 addDynamicImageView(R.drawable.petrolera_image);
+                selectedOption = "Petrolera";
             }
         });
 
@@ -71,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Seleccionaste Construcción", Toast.LENGTH_SHORT).show();
                 //Mostar imagen
                 addDynamicImageView(R.drawable.construccion_image);
+                selectedOption = "Construcción";
             }
         });
 
@@ -81,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Seleccionaste Industrial", Toast.LENGTH_SHORT).show();
                 //Mostar imagen
                 addDynamicImageView(R.drawable.industrial_image);
+                selectedOption = "Industrial";
             }
         });
 
@@ -91,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Seleccionaste Salud", Toast.LENGTH_SHORT).show();
                 //Mostar imagen
                 addDynamicImageView(R.drawable.salud_image);
+                selectedOption = "Salud";
             }
         });
 
@@ -101,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Seleccionaste Educación", Toast.LENGTH_SHORT).show();
                 //Mostar imagen
                 addDynamicImageView(R.drawable.educacion_image);
+                selectedOption = "Educación";
             }
         });
 
@@ -111,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Seleccionaste Oficina", Toast.LENGTH_SHORT).show();
                 //Mostar imagen
                 addDynamicImageView(R.drawable.oficina_image);
+                selectedOption = "Oficina";
             }
         });
 
@@ -121,9 +130,19 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Seleccionaste Minería", Toast.LENGTH_SHORT).show();
                 //Mostar imagen
                 addDynamicImageView(R.drawable.mineria_image);
+                selectedOption = "Minería";
             }
         });
 
+        buttonContinuar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Acción al hacer clic en "Continuar"
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                intent.putExtra("SELECTED_OPTION", selectedOption);
+                startActivity(intent);
+            }
+        });
 
     }
 

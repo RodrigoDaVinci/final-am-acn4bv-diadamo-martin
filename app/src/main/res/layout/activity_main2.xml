@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+
+    <!-- Navbar -->
+    <LinearLayout
+        android:id="@+id/navbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="#00bfa5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Hamburguesa (a la izquierda) -->
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="58dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_menu" />
+
+        <!-- Título (centrado) -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SYSO5"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Imagen del logo (derecha) -->
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_usuario" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:background="#006776"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navbarLayout">
+
+        <LinearLayout
+            android:id="@+id/mainContentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#006776"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/textViewSelectedOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#1de9b6"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <!-- Opción 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewSelectedOption"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Botón 1 -->
+            <Button
+                android:id="@+id/buttonCheckListSeguridad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:backgroundTint="#9EC58A"
+                android:text="Check List Seguridad"
+                android:textColor="#00695c"
+                android:textStyle="bold"
+                app:icon="@drawable/flecha"
+                app:iconGravity="end"
+                app:iconTint="#00695c" />
+
+            <!-- Botón 2 -->
+            <Button
+                android:id="@+id/buttonCharlasSeguridad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:backgroundTint="#9EC58A"
+                android:text="Charlas de Seguridad"
+                android:textColor="#00695c"
+                android:textStyle="bold"
+                app:icon="@drawable/flecha"
+                app:iconGravity="end"
+                app:iconTint="#00695c"/>
+
+            <!-- Botón 3 -->
+            <Button
+                android:id="@+id/buttonNormativa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:backgroundTint="#9EC58A"
+                android:text="Normativa"
+                android:textColor="#00695c"
+                android:textStyle="bold"
+                app:icon="@drawable/flecha"
+                app:iconGravity="end"
+                app:iconTint="#00695c"/>
+
+            <!-- Botón 4 -->
+            <Button
+                android:id="@+id/buttonDenunciaAccidente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:backgroundTint="#9EC58A"
+                android:text="Denuncia por accidente"
+                android:textColor="#00695c"
+                android:textStyle="bold"
+                app:icon="@drawable/flecha"
+                app:iconGravity="end"
+                app:iconTint="#00695c"/>
+
+            <!-- Botón 5 -->
+            <Button
+                android:id="@+id/buttonCapacitaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:backgroundTint="#9EC58A"
+                android:text="Capacitaciones"
+                android:textColor="#00695c"
+                android:textStyle="bold"
+                app:icon="@drawable/flecha"
+                app:iconGravity="end"
+                app:iconTint="#00695c"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
