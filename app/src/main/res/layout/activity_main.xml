@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Navbar -->
+    <LinearLayout
+        android:id="@+id/navbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="#00bfa5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Hamburguesa (a la izquierda) -->
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="58dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_menu" />
+
+        <!-- Título (centrado) -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SYSO5"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Imagen del logo (derecha) -->
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_usuario" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:background="#006776"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navbarLayout">
+
+        <LinearLayout
+            android:id="@+id/mainContentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#006776"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elegí tu actividad laboral"
+                android:textColor="#1de9b6"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Opciones -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+
+                <Button
+                    android:id="@+id/buttonAgro"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:backgroundTint="#9EC58A"
+                    android:onClick="onOptionClick"
+                    android:text="Agro"
+                    android:textColor="#00695c"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_agro"
+                    app:iconTint="#00695c" />
+
+                <Button
+                    android:id="@+id/buttonPetrolera"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:backgroundTint="#9EC58A"
+                    android:onClick="onOptionClick"
+                    android:text="Petrolera"
+                    android:textColor="#00695c"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_petrolera"
+                    app:iconTint="#00695c" />
+
+                <!-- Agrega el resto botones... -->
+                <Button
+                    android:id="@+id/buttonIndustrial"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:backgroundTint="#9EC58A"
+                    android:onClick="onOptionClick"
+                    android:text="Industrial"
+                    android:textColor="#00695c"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_industrial"
+                    app:iconTint="#00695c" />
+
+                <Button
+                    android:id="@+id/buttonConstruccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:backgroundTint="#9EC58A"
+                    android:onClick="onOptionClick"
+                    android:text="Construcción"
+                    android:textColor="#00695c"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_construccion"
+                    app:iconTint="#00695c" />
+
+                <Button
+                    android:id="@+id/buttonSalud"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:backgroundTint="#9EC58A"
+                    android:onClick="onOptionClick"
+                    android:text="Salud"
+                    android:textColor="#00695c"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_salud"
+                    app:iconTint="#00695c" />
+
+                <Button
+                    android:id="@+id/buttonEducacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:backgroundTint="#9EC58A"
+                    android:onClick="onOptionClick"
+                    android:text="Educación"
+                    android:textColor="#00695c"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_educacion"
+                    app:iconTint="#00695c" />
+
+                <Button
+                    android:id="@+id/buttonOficina"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:backgroundTint="#9EC58A"
+                    android:onClick="onOptionClick"
+                    android:text="Oficina"
+                    android:textColor="#00695c"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_oficina"
+                    app:iconTint="#00695c" />
+
+                <Button
+                    android:id="@+id/buttonMineria"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:backgroundTint="#9EC58A"
+                    android:onClick="onOptionClick"
+                    android:text="Minería"
+                    android:textColor="#00695c"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_mineria"
+                    app:iconTint="#00695c" />
+
+                <Button
+                    android:id="@+id/buttonContinuar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="#009688"
+                    android:text="Continuar"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
