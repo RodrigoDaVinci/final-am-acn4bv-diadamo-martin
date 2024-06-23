@@ -42,7 +42,7 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
         tasksMap = new HashMap<>();
         tasksMap.put("Agro", getTasksForAgro());
         tasksMap.put("Petrolera", getTasksForPetrolera());
-        // Agrega más opciones y tareas según sea necesario
+        // Agrega más opciones
         tasksMap.put("Industrial", getTasksForIndustrial());
         tasksMap.put("Construcción", getTasksForConstruccion());
         tasksMap.put("Salud", getTasksForSalud());
@@ -177,7 +177,6 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
                 subTasks.add("Tiene lava ojos");
                 // Agrega más subtareas específicas para Petrolera según sea necesario
                 break;
-
             case "Elementos de protección personal":
                 subTasks.add("Botas de trabajo impermeables");
                 subTasks.add("Calzado con puntera de protección");
@@ -193,7 +192,6 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
                 subTasks.add("Protección facial y ocular para fundidor");
                 subTasks.add("Protección facial y ocular para soldador");
                 subTasks.add("Protección endaural o de copa");
-
                 break;
             case "Inspeccionar plataformas":
                 subTasks.add("Superficie antideslizante");
@@ -284,8 +282,8 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
 
                 // Agrega más casos para otras categorías si es necesario
             default:
-                // En caso de no coincidir con ninguna categoría específica, retorna una lista vacía o genérica
-                subTasks.add("Realizar tarea específica");
+                // En caso de no coincidir con ninguna categoría específica
+                subTasks.add("Contactar al administrador");
                 break;
 
         }
@@ -307,7 +305,6 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
 
         // Crea un intent para enviar el email
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("message/rfc822");
         intent.putExtra(Intent.EXTRA_SUBJECT, "Lista de tareas de seguridad");
         intent.putExtra(Intent.EXTRA_TEXT, emailContent.toString());
 

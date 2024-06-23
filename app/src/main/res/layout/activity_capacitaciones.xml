@@ -6,5 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CapacitacionesActivity">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En Construcción"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Esta pantalla está en construcción y estará disponible próximamente."
+            android:layout_marginTop="16dp"
+            android:textAlignment="center" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
