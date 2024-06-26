@@ -89,7 +89,7 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
         List<String> tasks = new ArrayList<>();
         tasks.add("Inspeccionar plataformas");
         tasks.add("Control de válvulas");
-        tasks.add("Elementos de protección Personal");
+        tasks.add("Elementos de protección personal");
         return tasks;
     }
 
