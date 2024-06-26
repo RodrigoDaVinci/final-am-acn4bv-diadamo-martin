@@ -42,7 +42,6 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
         tasksMap = new HashMap<>();
         tasksMap.put("Agro", getTasksForAgro());
         tasksMap.put("Petrolera", getTasksForPetrolera());
-        // Agrega más opciones
         tasksMap.put("Industrial", getTasksForIndustrial());
         tasksMap.put("Construcción", getTasksForConstruccion());
         tasksMap.put("Salud", getTasksForSalud());
@@ -160,6 +159,7 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
 
     private List<String> getSubTasks(String task) {
         List<String> subTasks = new ArrayList<>();
+        // Agrega las nuevas subtares
         switch (task) {
             case "Protección tractor":
                 subTasks.add("Tiene barra antivuelco");
@@ -167,7 +167,6 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
                 subTasks.add("Tiene alarma sonora lumínica");
                 subTasks.add("Luces reglamentarias");
                 subTasks.add("Espejo retrovisor");
-                // Agrega más subtareas específicas para Agro según sea necesario
                 break;
             case "Depósitos fitosanitarios":
                 subTasks.add("Estantería anticombustible");
@@ -175,7 +174,6 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
                 subTasks.add("Señalética no ingresar personal autorizado");
                 subTasks.add("Cumple con las fichas de datos de seguridad SGA");
                 subTasks.add("Tiene lava ojos");
-                // Agrega más subtareas específicas para Petrolera según sea necesario
                 break;
             case "Elementos de protección personal":
                 subTasks.add("Botas de trabajo impermeables");
@@ -279,8 +277,6 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
                 subTasks.add("Tiene una señalética que indica el último control del vehículo");
                 subTasks.add("Tiene conocimientos de mecánica ligera");
                 break;
-
-                // Agrega más casos para otras categorías si es necesario
             default:
                 // En caso de no coincidir con ninguna categoría específica
                 subTasks.add("Contactar al administrador");
@@ -306,6 +302,7 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
         // Crea un intent para enviar el email
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("message/rfc822");
+        // No precarga el cuerpo del email, pero arma correctamente un copy /  paste
         intent.putExtra(Intent.EXTRA_SUBJECT, "Lista de tareas de seguridad");
         intent.putExtra(Intent.EXTRA_TEXT, emailContent.toString());
 

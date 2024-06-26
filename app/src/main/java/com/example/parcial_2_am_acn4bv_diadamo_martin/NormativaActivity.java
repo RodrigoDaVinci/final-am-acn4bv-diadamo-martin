@@ -25,7 +25,7 @@ public class NormativaActivity extends AppCompatActivity {
         });
     }
     public void onIngresarNormativa(View view) {
-        // URL del documento normativo
+        // URL de la pagina
         String url = "https://www.argentina.gob.ar/srt/prevencion/normativa";
 
         Intent intent = new Intent(Intent.ACTION_VIEW);

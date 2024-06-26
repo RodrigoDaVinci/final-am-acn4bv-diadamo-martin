@@ -6,48 +6,104 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CheckListSeguridadActivity">
-
-
-    <TextView
-        android:id="@+id/textViewSelectedOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tareas de Seguridad"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <Spinner
-        android:id="@+id/spinnerTareas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textViewSelectedOption"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
+    <!-- Navbar -->
     <LinearLayout
-        android:id="@+id/linearLayoutTareas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/spinnerTareas"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/navbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="#00bfa5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/buttonEnviar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enviar"
-        app:layout_constraintTop_toBottomOf="@id/linearLayoutTareas"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        <!-- Hamburguesa (a la izquierda) -->
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="58dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_menu"
+            android:contentDescription="Menú"/>
+
+        <!-- Título (centrado) -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SYSO5"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Imagen del logo (derecha) -->
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_usuario" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:background="#9EC58A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navbarLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewSelectedOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tareas de Seguridad"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#00695c"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal" />
+
+            <Spinner
+                android:id="@+id/spinnerTareas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:foregroundTint="#BA3232"
+                android:foregroundTintMode="screen"
+                android:minWidth="200dp"
+                android:minHeight="48dp"
+                android:padding="12dp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutTareas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp" />
+
+            <Button
+                android:id="@+id/buttonEnviar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enviar"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#009688"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
