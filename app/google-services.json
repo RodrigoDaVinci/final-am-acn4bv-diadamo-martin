@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "655243298778",
+    "project_id": "acn4bv-diadamo-martin",
+    "storage_bucket": "acn4bv-diadamo-martin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655243298778:android:a2bcbec7d7b723620b22e3",
+        "android_client_info": {
+          "package_name": "com.example.parcial_2_am_acn4bv_diadamo_martin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRfTgdj6L8v7iZ44___GrQDULO7i40M4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

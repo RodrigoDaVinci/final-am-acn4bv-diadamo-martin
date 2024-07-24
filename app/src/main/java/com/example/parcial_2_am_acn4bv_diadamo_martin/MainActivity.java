@@ -14,12 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
+    //FirebaseFirestore db = FirebaseFirestore.getInstance();
     private ImageView dynamicImageView;
     private Button buttonContinuar;
     private String selectedOption;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        mAuth = FirebaseAuth.getInstance();
 
         // Referencias a los botones de las opciones
         Button buttonAgro = findViewById(R.id.buttonAgro);
@@ -42,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
         Button buttonEducacion = findViewById(R.id.buttonEducacion);
         Button buttonOficina = findViewById(R.id.buttonOficina);
         Button buttonMineria = findViewById(R.id.buttonMineria);
+        Button buttonLogout = findViewById(R.id.buttonLogout);
+        buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
 
         //Continuar
         buttonContinuar = findViewById(R.id.buttonContinuar);
@@ -168,4 +181,13 @@ public class MainActivity extends AppCompatActivity {
         containerLayout.addView(dynamicImageView);
         buttonContinuar.setVisibility(View.VISIBLE);
     }
+
+    private void logout() {
+        mAuth.signOut();
+        Intent intent = new Intent(MainActivity.this, Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+    }
+
 }
