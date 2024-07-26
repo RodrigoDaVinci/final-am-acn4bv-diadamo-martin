@@ -22,6 +22,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class CheckListSeguridadActivity extends AppCompatActivity {
 
     private Spinner spinnerTareas;
@@ -29,11 +32,16 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
     private Button buttonEnviar;
     private String selectedOption;
     private Map<String, List<String>> tasksMap;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_list_seguridad);
+
+
+        FirebaseApp.initializeApp(this);
+        db = FirebaseFirestore.getInstance();
 
         // Obtiene la opción seleccionada de la actividad anterior
         selectedOption = getIntent().getStringExtra("SELECTED_OPTION");
@@ -61,7 +69,8 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
         spinnerTareas.setAdapter(adapter);
 
         // Configura el botón de enviar
-        buttonEnviar.setOnClickListener(v -> sendEmail());
+        //buttonEnviar.setOnClickListener(v -> sendEmail());
+        buttonEnviar.setOnClickListener(v -> insertDataToFirestore());
 
         // Configura la selección del Spinner
         spinnerTareas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -286,7 +295,42 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
         return subTasks;
     }
 
-    private void sendEmail() {
+    private void insertDataToFirestore() {
+        StringBuilder tasksStatus = new StringBuilder();
+        for (int i = 0; i < linearLayoutTareas.getChildCount(); i++) {
+            Switch switchTask = (Switch) linearLayoutTareas.getChildAt(i);
+            tasksStatus.append(switchTask.getText().toString())
+                    .append(": ")
+                    .append(switchTask.isChecked() ? "Realizado" : "No realizado")
+                    .append("\n");
+        }
+
+        // Obtengo el tipo de tarea seleccionado del Spinner
+        String selectedTaskType = spinnerTareas.getSelectedItem().toString();
+        Map<String, Object> data = new HashMap<>();
+        data.put("selectedOption", selectedOption);
+        data.put("tasksStatus", tasksStatus.toString());
+        data.put("taskType", selectedTaskType);
+
+        // Inserta los datos en Firestore
+        db.collection("checklists")
+                .add(data)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(CheckListSeguridadActivity.this, "Datos agregados correctamente", Toast.LENGTH_SHORT).show();
+
+                    // Intent a MainActivity2
+                    Intent intent = new Intent(CheckListSeguridadActivity.this, MainActivity2.class);
+                    intent.putExtra("SELECTED_OPTION", selectedOption);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(CheckListSeguridadActivity.this, "Error al agregar datos", Toast.LENGTH_SHORT).show();
+                });
+    }
+    //Comento la logica vieja
+    /*private void sendEmail() {
         StringBuilder emailContent = new StringBuilder();
         emailContent.append("Tareas de ").append(selectedOption).append(":\n\n");
 
@@ -311,5 +355,5 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(CheckListSeguridadActivity.this, "No hay clientes de email instalados.", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 }
