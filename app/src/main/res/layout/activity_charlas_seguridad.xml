@@ -29,31 +29,29 @@
             android:src="@drawable/ic_menu"
             android:contentDescription="Menú" />
 
+        <!-- Título (centrado) -->
         <TextView
             android:id="@+id/titleText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Charlas de Seguridad"
+            android:text="SYSO5"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <!-- Imagen del logo (derecha) -->
         <ImageView
             android:id="@+id/logoImage"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_usuario" />
+            android:contentDescription="Logo"
+            android:onClick="showDropdownMenu"
+            android:src="@drawable/ic_usuario"
+            tools:ignore="TouchTargetSizeCheck" />
 
-        <Button
-            android:id="@+id/buttonLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cerrar sesión"
-            android:textColor="#FFFFFF"
-            android:layout_marginEnd="16dp" />
     </LinearLayout>
 
     <ScrollView
@@ -70,6 +68,14 @@
             android:background="#006776"
             android:orientation="vertical"
             android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Charlas de Seguridad"
+                android:textColor="#1de9b6"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <!-- Cards -->
             <androidx.cardview.widget.CardView

@@ -2,11 +2,13 @@ package com.example.parcial_2_am_acn4bv_diadamo_martin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -37,6 +39,7 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
     private Map<String, List<String>> tasksMap;
     private FirebaseFirestore db;
     private com.google.firebase.firestore.FieldValue FieldValue;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,7 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        mAuth = FirebaseAuth.getInstance();
     }
 
     private List<String> getTasksForAgro() {
@@ -368,4 +372,32 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
             Toast.makeText(CheckListSeguridadActivity.this, "No hay clientes de email instalados.", Toast.LENGTH_SHORT).show();
         }
     }*/
+    public void showDropdownMenu(View view) {
+        // Crear el PopupMenu
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.menu_dropdown, popupMenu.getMenu());
+
+        // Configurar el listener para el botón de cerrar sesión
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.menu_logout) {
+                // Manejar el clic en el botón de cerrar sesión
+                logout();
+                return true;
+            }
+            return false;
+        });
+
+        // Mostrar el menú
+        popupMenu.show();
+    }
+
+    private void logout() {
+        mAuth.signOut();
+        Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
 }
