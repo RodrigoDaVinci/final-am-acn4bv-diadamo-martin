@@ -23,6 +23,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CheckListSeguridadActivity extends AppCompatActivity {
@@ -33,6 +36,7 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
     private String selectedOption;
     private Map<String, List<String>> tasksMap;
     private FirebaseFirestore db;
+    private com.google.firebase.firestore.FieldValue FieldValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -305,12 +309,20 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
                     .append("\n");
         }
 
+        // Obtengo el usuario actual
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userEmail = (user != null) ? user.getEmail() : "Desconocido";
+        
         // Obtengo el tipo de tarea seleccionado del Spinner
         String selectedTaskType = spinnerTareas.getSelectedItem().toString();
         Map<String, Object> data = new HashMap<>();
         data.put("selectedOption", selectedOption);
         data.put("tasksStatus", tasksStatus.toString());
         data.put("taskType", selectedTaskType);
+        data.put("userEmail", userEmail); // Agrega el email del usuario
+        data.put("timestamp", FieldValue.serverTimestamp()); // Agrega el timestamp
+
+
 
         // Inserta los datos en Firestore
         db.collection("checklists")

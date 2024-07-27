@@ -2,11 +2,13 @@ package com.example.parcial_2_am_acn4bv_diadamo_martin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -47,14 +49,6 @@ public class MainActivity extends AppCompatActivity {
         Button buttonEducacion = findViewById(R.id.buttonEducacion);
         Button buttonOficina = findViewById(R.id.buttonOficina);
         Button buttonMineria = findViewById(R.id.buttonMineria);
-        Button buttonLogout = findViewById(R.id.buttonLogout);
-        buttonLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
-
 
         //Continuar
         buttonContinuar = findViewById(R.id.buttonContinuar);
@@ -182,10 +176,39 @@ public class MainActivity extends AppCompatActivity {
         buttonContinuar.setVisibility(View.VISIBLE);
     }
 
-    private void logout() {
+    /*private void logout() {
         mAuth.signOut();
         Intent intent = new Intent(MainActivity.this, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+    }*/
+
+    public void showDropdownMenu(View view) {
+        // Crear el PopupMenu
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.menu_dropdown, popupMenu.getMenu());
+
+        // Configurar el listener para el botón de cerrar sesión
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.menu_logout) {
+                // Manejar el clic en el botón de cerrar sesión
+                logout();
+                return true;
+            }
+            return false;
+        });
+
+        // Mostrar el menú
+        popupMenu.show();
+    }
+
+    private void logout() {
+        mAuth.signOut();
+        Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
