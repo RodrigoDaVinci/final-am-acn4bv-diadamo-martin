@@ -97,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:text="Importancia de los Elementos de Protección Personal 1"
                         android:textColor="#00695c"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -121,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:text="Importancia de los Elementos de Protección Personal 2"
                         android:textColor="#00695c"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -145,7 +145,7 @@
                         android:layout_height="wrap_content"
                         android:text="Indumentaria de Alta Visibilidad"
                         android:textColor="#00695c"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:text="Elementos de Protección Personal: Oídos"
                         android:textColor="#00695c"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -193,7 +193,7 @@
                         android:layout_height="wrap_content"
                         android:text="Chequeo Médico Anual"
                         android:textColor="#00695c"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -217,7 +217,7 @@
                         android:layout_height="wrap_content"
                         android:text="Exámenes Médicos Obligatorios"
                         android:textColor="#00695c"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

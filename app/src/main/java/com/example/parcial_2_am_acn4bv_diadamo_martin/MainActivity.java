@@ -190,14 +190,6 @@ public class MainActivity extends AppCompatActivity {
         buttonContinuar.setVisibility(View.VISIBLE);
     }
 
-    /*private void logout() {
-        mAuth.signOut();
-        Intent intent = new Intent(MainActivity.this, Login.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
-    }*/
-
     private void getUser(String email) {
         db.collection("usuario")
                 .whereEqualTo("user", email)
@@ -228,10 +220,8 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.menu_dropdown, popupMenu.getMenu());
 
-        // Configurar el listener para el botón de cerrar sesión
         popupMenu.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.menu_logout) {
-                // Manejar el clic en el botón de cerrar sesión
                 logout();
                 return true;
             }

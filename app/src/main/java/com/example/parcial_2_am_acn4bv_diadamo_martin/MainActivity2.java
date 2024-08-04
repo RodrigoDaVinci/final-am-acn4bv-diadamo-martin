@@ -68,10 +68,8 @@ public class MainActivity2 extends AppCompatActivity {
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.menu_dropdown, popupMenu.getMenu());
 
-        // Configurar el listener para el botón de cerrar sesión
         popupMenu.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.menu_logout) {
-                // Manejar el clic en el botón de cerrar sesión
                 logout();
                 return true;
             }

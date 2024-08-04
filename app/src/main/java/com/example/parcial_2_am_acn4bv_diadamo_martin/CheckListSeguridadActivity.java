@@ -157,8 +157,6 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
         return tasks;
     }
 
-    // Agrega más métodos getTasksFor... para otras opciones
-
     private void showSubTasks(String task) {
         // Limpia las tareas anteriores
         linearLayoutTareas.removeAllViews();
@@ -323,8 +321,8 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
         data.put("selectedOption", selectedOption);
         data.put("tasksStatus", tasksStatus.toString());
         data.put("taskType", selectedTaskType);
-        data.put("userEmail", userEmail); // Agrega el email del usuario
-        data.put("timestamp", FieldValue.serverTimestamp()); // Agrega el timestamp
+        data.put("userEmail", userEmail);
+        data.put("timestamp", FieldValue.serverTimestamp());
 
 
 
@@ -372,16 +370,15 @@ public class CheckListSeguridadActivity extends AppCompatActivity {
             Toast.makeText(CheckListSeguridadActivity.this, "No hay clientes de email instalados.", Toast.LENGTH_SHORT).show();
         }
     }*/
+
     public void showDropdownMenu(View view) {
         // Crear el PopupMenu
         PopupMenu popupMenu = new PopupMenu(this, view);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.menu_dropdown, popupMenu.getMenu());
 
-        // Configurar el listener para el botón de cerrar sesión
         popupMenu.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.menu_logout) {
-                // Manejar el clic en el botón de cerrar sesión
                 logout();
                 return true;
             }
