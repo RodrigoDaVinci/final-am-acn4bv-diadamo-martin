@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,15 +18,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentSnapshot;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    //FirebaseFirestore db = FirebaseFirestore.getInstance();
     private ImageView dynamicImageView;
     private Button buttonContinuar;
     private String selectedOption;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private TextView welcomeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        welcomeTextView = findViewById(R.id.welcomeTextView);
+
+        // Obtener el usuario actual
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String email = currentUser.getEmail();
+            getUser(email);
+        }
 
         // Referencias a los botones de las opciones
         Button buttonAgro = findViewById(R.id.buttonAgro);
@@ -183,6 +197,30 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }*/
+
+    private void getUser(String email) {
+        db.collection("usuario")
+                .whereEqualTo("user", email)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (!task.getResult().isEmpty()) {
+                            for (DocumentSnapshot document : task.getResult()) {
+                                String name = document.getString("name");
+                                if (name != null) {
+                                    welcomeTextView.setText("Bienvenido, " + name);
+                                } else {
+                                    Toast.makeText(MainActivity.this, "El campo 'name' no existe en el documento", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        } else {
+                            Toast.makeText(MainActivity.this, "No se encontró ningún documento con el user proporcionado", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, "Error al obtener el documento", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
     public void showDropdownMenu(View view) {
         // Crear el PopupMenu
